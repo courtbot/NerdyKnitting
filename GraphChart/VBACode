@@ -1,0 +1,42 @@
+Private Sub Worksheet_Change(ByVal Target As Range)
+    On Error GoTo bm_Safe_Exit
+    Application.EnableEvents = False
+    Dim rng As Range, clr As String
+    For Each rng In Target
+        If Len(rng.Value2) = 6 Then
+            clr = rng.Value2
+            rng.Interior.Color = _
+              RGB(Application.Hex2Dec(Left(clr, 2)), _
+                  Application.Hex2Dec(Mid(clr, 3, 2)), _
+                  Application.Hex2Dec(Right(clr, 2)))
+        End If
+    Next rng
+
+bm_Safe_Exit:
+    Application.EnableEvents = True
+End Sub
+
+Sub Create_Graph_Cells()
+'aka Square the Cells or Convert sheet to Grid
+'This macro will convert ActiveSheet/Selected Columns to Graph cells
+'based on First Cell dimensions.
+    Dim i As Integer
+    Dim rng As Range
+    If MsgBox("Would you like to select the Whole Worksheet? If not only the selection will have a boarder", _
+              vbYesNo, "Selected Columns or Whole Worksheet?") = vbYes Then
+        Set rng = ActiveSheet.Cells
+    Else
+        Set rng = Selection
+    End If
+    For i = 1 To 4
+        With rng
+            .Columns.ColumnWidth = _
+            .Columns("A").ColumnWidth / .Columns("A").Width * _
+            .Rows(1).Height
+        End With
+    Next
+            
+        With rng.Borders
+            .LineStyle = xlContinuous
+        End With
+End Sub
