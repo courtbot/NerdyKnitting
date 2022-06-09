@@ -9,3 +9,4 @@ Currently the knitting pattern converter works in a 3 step process:
 1. Convert data to basic graph in r - save as image
 2. Use Python to pixelate graph image and export to excel as Hexval
 3. Use VBA code in the sheet to convert hexval to color/ add some basic formatting
+The Example excel sheet shows the results of this process using the Waunekena Snowfall Data 
