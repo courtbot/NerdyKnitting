@@ -35,7 +35,7 @@ prettygraph <- df %>%
     geom_point(alpha=0.5, shape=15, aes(colour = Bins)) +
     scale_color_viridis(discrete=TRUE, option="mako")+
     scale_size(range= c(1,6),name="Ranking")+
-#This is the 'get rid of everything' part of the graph   
+#This is the 'get rid of everything' part - regardless of what you do to the graph this should be included   
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         panel.background = element_blank(),legend.position = "none", 
         axis.text=element_blank(), axis.ticks=element_blank(), axis.title = element_blank())
